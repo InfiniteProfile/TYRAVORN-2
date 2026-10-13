@@ -7,7 +7,10 @@
   const searchForm = $("#searchForm"), searchInput = $("#profileSearch");
   const currentNumber = $("#currentNumber");
   const VERSION = "tyravorn-render-v2";
-  const MAX_CARDS = 8;
+  const MAX_CARDS = 120;
+  const INITIAL_PROFILES = 100;
+  const GENERATE_BATCH = 20;
+  const PREFETCH_DISTANCE = 1500;
   const CARD_STEP = 1; // profile IDs are direct identities, never array indexes.
   let nextId = "1", streamPaused = false, activeDirect = false;
   const cache = new Map();
@@ -359,8 +362,12 @@
   }
   function renderInitial(){
     const frag=document.createDocumentFragment();
-    for(let i=0;i<3;i++){frag.append(makeCard(nextId));nextId=incrementDecimal(nextId);}
-    list.append(frag);currentNumber.textContent="1";
+    for(let i=0;i<INITIAL_PROFILES;i++){
+      frag.append(makeCard(nextId));
+      nextId=incrementDecimal(nextId);
+    }
+    list.append(frag);
+    currentNumber.textContent="1";
   }
   function incrementDecimal(s){
     const a=s.split("");let i=a.length-1;
@@ -371,9 +378,12 @@
   function appendMore(){
     if(streamPaused||activeDirect)return;
     const frag=document.createDocumentFragment();
-    for(let i=0;i<3;i++){frag.append(makeCard(nextId));nextId=incrementDecimal(nextId);}
+    for(let i=0;i<GENERATE_BATCH;i++){
+      frag.append(makeCard(nextId));
+      nextId=incrementDecimal(nextId);
+    }
     list.append(frag);
-    // Keep the live stream bounded. Drop oldest cards only after the reader is far down.
+    // Keep a bounded rolling window of rendered cards for mobile performance.
     while(list.children.length>MAX_CARDS)list.firstElementChild.remove();
     const first=list.firstElementChild;
     if(first&&first.dataset.id)currentNumber.textContent=first.dataset.id;
