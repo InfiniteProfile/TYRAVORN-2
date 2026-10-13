@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101510">
+  <meta name="description" content="TYRAVORN — one Jurassic world, infinite fictional creature identities.">
+  <title>TYRAVORN — Infinite Jurassic World</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="TYRAVORN home">
+      <span class="brand-mark" aria-hidden="true">T</span>
+      <span><strong>TYRAVORN</strong><small>ONE JURASSIC WORLD · INFINITE IDENTITIES</small></span>
+    </a>
+    <form id="searchForm" class="search" role="search">
+      <span aria-hidden="true" class="search-icon">⌕</span>
+      <input id="profileSearch" inputmode="numeric" autocomplete="off" spellcheck="false"
+        aria-label="Search exact profile number" placeholder="Find a creature by exact ID">
+      <button type="submit">EXPLORE</button>
+    </form>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="pulse"></span> FIELD ARCHIVE / JURASSIC PERIOD</p>
+        <h1>Before the world<br>had <em>boundaries.</em></h1>
+        <p class="hero-description">Enter a living catalogue of fictional prehistoric identities. Every number opens a distinct, reproducible creature—shaped by anatomy, habitat, and an ancient world.</p>
+        <div class="hero-meta">
+          <span><b>201.4—145</b><small>MILLION YEARS AGO</small></span>
+          <span><b>∞</b><small>IDENTITIES</small></span>
+          <span><b>NO. <span id="currentNumber">1</span></b><small>EXPLORING NOW</small></span>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="sun-disc"></div><div class="ridge ridge-back"></div><div class="ridge ridge-front"></div>
+        <div class="hero-fern fern-a"></div><div class="hero-fern fern-b"></div>
+        <span class="hero-stamp">TYRAVORN<br><small>PRIMORDIAL ARCHIVE</small></span>
+      </div>
+    </section>
+
+    <section class="era-strip" aria-label="Jurassic epochs">
+      <div><span class="era-dot"></span><strong>EARLY JURASSIC</strong><small>201.4—174.7 Ma</small></div>
+      <div><span class="era-dot"></span><strong>MIDDLE JURASSIC</strong><small>174.7—161.5 Ma</small></div>
+      <div><span class="era-dot"></span><strong>LATE JURASSIC</strong><small>161.5—145 Ma</small></div>
+      <p>Approximate geological boundaries</p>
+    </section>
+
+    <section class="archive-heading">
+      <div><p class="eyebrow">THE ENDLESS FIELD LOG</p><h2>Creature <em>identities</em></h2></div>
+      <div class="live-status"><span class="status-dot"></span><span id="statusText">FIELD ARCHIVE ACTIVE</span></div>
+    </section>
+
+    <div id="searchNotice" class="notice" hidden></div>
+    <section id="creatureList" class="creature-list" aria-label="Infinite creature profiles"></section>
+    <div id="sentinel" class="sentinel"><span class="loader"></span><span>THE WORLD CONTINUES</span></div>
+  </main>
+
+  <footer><span>TYRAVORN / FIELD ARCHIVE</span><span>FICTIONAL IDENTITIES · SCIENCE-INSPIRED DESIGNS</span><button id="backToStream" type="button">RETURN TO STREAM ↑</button></footer>
+  <script src="./script.js" defer></script>
+</body>
+</html>
